@@ -116,6 +116,9 @@ namespace Google.Ads.GoogleAds.Util
         /// <param name="levels">The trace levels.</param>
         public static void Configure(string source, string filePath, SourceLevels levels)
         {
+            var directory = Path.GetDirectoryName(filePath);
+            if (!Directory.Exists(directory)) Directory.CreateDirectory(directory);
+
             StreamWriter textWriter = new StreamWriter(filePath, true);
             Configure(source, textWriter, levels);
         }
